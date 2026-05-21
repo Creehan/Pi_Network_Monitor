@@ -220,7 +220,7 @@ def send_notification(subject, body):
 
     try:
         # We use SMTP_SSL for a secure connection on port 465
-        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
+        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT, timeout=10) as server:
             server.login(EMAIL_SENDER, EMAIL_PASSWORD)
             server.send_message(msg)
             print(f"--- Notification Sent: {subject} ---")
